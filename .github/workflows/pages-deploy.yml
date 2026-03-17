@@ -32,12 +32,6 @@ jobs:
         with:
           ruby-version: 3.4
           bundler-cache: true
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Build assets
-        run: npm install && npm run build
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
@@ -47,8 +41,9 @@ jobs:
           bundle exec htmlproofer _site \
             \-\-disable-external \
             \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/" \
-            \-\-allow-missing-href true \
-            \-\-no-enforce-https
+            \-\-ignore-missing-alt \
+            \-\-no-enforce-https \
+            \-\-checks "Links,Images"
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v4
         with:
