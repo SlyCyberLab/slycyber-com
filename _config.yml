@@ -168,6 +168,9 @@ collections:
   tabs:
     output: true
     sort_by: order
+  projects:
+    output: false
+    sort_by: weight
 
 defaults:
   - scope:
