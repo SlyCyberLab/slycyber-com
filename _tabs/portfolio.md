@@ -3,6 +3,7 @@ layout: page
 title: Portfolio
 icon: fas fa-folder-open
 order: 2
+custom_css: portfolio
 ---
 
 <div class="portfolio-grid">
